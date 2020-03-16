@@ -1,0 +1,28 @@
+﻿@model Ad4You.Models.Ad
+
+@{
+    ViewData["Title"] = "Details";
+}
+    <div>
+        <div>
+            <h1>@Html.DisplayFor(model => model.name)</h1>
+            <h4><b>Rubric:</b> @Html.DisplayFor(model => model.rubric.name)</h4>
+        </div>
+        <hr />
+        <div>
+            <h4>@Html.DisplayFor(model => model.description)</h4>
+        </div>
+        <hr />
+        <div>
+            <h6><b>City:</b> @Html.DisplayFor(model => model.city.name)</h6>
+            <h6><b>Phone Number:</b> @Html.DisplayFor(model => model.phone_number)</h6>
+        </div>
+        <hr />
+        <div>
+            <h2>@Html.DisplayFor(model => model.price) @Html.DisplayFor(model => model.currency.sign)</h2>
+        </div>
+    </div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

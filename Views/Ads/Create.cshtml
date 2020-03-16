@@ -1,0 +1,60 @@
+﻿@model Ad4You.Models.Ad
+
+@{
+    ViewData["Title"] = "New Ad";
+}
+
+<h2>New Ad</h2>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <h5>Name</h5>
+                <input asp-for="name" class="form-control" />
+                <span asp-validation-for="name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <h5>Description</h5>
+                <textarea asp-for="description" class="form-control"></textarea>
+                <span asp-validation-for="description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <h5>Rubric</h5>
+                <select asp-for="rubricid" class="form-control" asp-items="ViewBag.rubricid"></select>
+                <span asp-validation-for="rubricid" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <h5>City</h5>
+                <select asp-for="cityid" class="form-control" asp-items="ViewBag.cityid"></select>
+                <span asp-validation-for="cityid" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <h5>Phone Number</h5>
+                <input asp-for="phone_number" class="form-control" />
+                <span asp-validation-for="phone_number" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <h5>Price</h5>
+                <div style="width: 100%">
+                    <input asp-for="price" class="form-control" />
+                    <span asp-validation-for="price" class="text-danger"></span>
+                </div>
+                <div style="width: 20%">
+                    <select asp-for="currencyid" class="form-control" asp-items="ViewBag.currencyid"></select>
+                    <span asp-validation-for="currencyid" class="text-danger"></span>
+                </div>
+            </div>
+            <input type="submit" style="margin-top: 20px" value="Create" class="btn btn-primary" />
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

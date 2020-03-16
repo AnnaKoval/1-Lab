@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Ad4You.Models.Ad>
+
+@{
+    ViewData["Title"] = "Ads";
+}
+
+<h1>Ads</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+@using (Html.BeginForm())
+{
+<p>
+    Find by name, description or rubric: @Html.TextBox("searchString")
+    <input type="submit" value="Search" />
+</p>
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <h6>@Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.NameSortParm })</h6>
+            </th>
+            <th>
+                <h6>@Html.ActionLink("Rubric", "Index", new { sortOrder = ViewBag.RubricSortParm })</h6>
+            </th>
+            <th>
+                <h6>City</h6>
+            </th>
+            <th>
+                <h6>Phone Number</h6>
+            </th>
+            <th>
+                <h6>Price</h6>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.name
+                </td>
+                <td>
+                    @item.rubric.name
+                </td>
+                <td>
+                    @item.city.name
+                </td>
+                <td>
+                    @item.phone_number
+                </td>
+                <td>
+                    @item.price @item.currency.sign
+                </td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.id">Open</a>
+                    <!--|<a asp-action="Edit" asp-route-id="@item.id">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@item.id">Delete</a>-->
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
